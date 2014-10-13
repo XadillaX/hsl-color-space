@@ -1,0 +1,48 @@
+<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
+<style>
+.color {
+    width: 20px;
+    height: 20px;
+    float: left;
+    /**margin-right: 2px;
+    margin-bottom: 2px;*/
+}
+
+textarea {
+    margin: 10px;
+    height: 100px;
+    width: 300px;
+}
+</style>
+<script>
+var count = 0;
+$(function() {
+    for(var i = 19; i >= 0; i--) {
+        for(var j = 0; j < 36; j++) {
+            $("#palette").append("<div class='color'></div>");
+            $(".color").eq(count++).css("background-color", "hsl(" + (j * 10) + ", " + "100%, " + parseInt(((i + 1) / 21) * 100) + "%)");
+        }
+        $("#palette").append("<div style='clear: both;'></div>");
+    }
+
+    $("#palette").append("<br />");
+    for(var i = 0; i < 36; i++) {
+        $("#palette").append("<div class='color'></div>");
+        var val = parseInt(((35 - i) / 35) * 100);
+        $(".color").eq(count++).css("background-color", "rgb(" + val + ", " + val + ", " + val + ")");
+    }
+
+    var colors = [];
+    $(".color").each(function() {
+        var result = /rgb\((\d+), (\d+), (\d+)\)/.exec($(this).css("background-color"));
+        colors.push([ parseInt(result[1]), parseInt(result[2]), parseInt(result[3]) ]);
+    });
+
+    $("textarea").val(JSON.stringify(colors));
+});
+</script>
+
+<textarea></textarea>
+
+<div id="palette"></div>
+
