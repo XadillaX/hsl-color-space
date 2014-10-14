@@ -38,7 +38,7 @@ $(function() {
     var colors = [];
     $(".color").each(function() {
         var result = /rgb\((\d+), (\d+), (\d+)\)/.exec($(this).css("background-color"));
-        colors.push([ parseInt(result[1]), parseInt(result[2]), parseInt(result[3]) ]);
+        colors.push({ r: parseInt(result[1]), g: parseInt(result[2]), b: parseInt(result[3]) });
     });
 
     $("textarea").val(JSON.stringify(colors));
