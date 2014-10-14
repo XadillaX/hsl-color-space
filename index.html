@@ -1,5 +1,8 @@
 <script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js"></script>
 <style>
+body {
+    font-size: 12px;
+}
 .color {
     width: 20px;
     height: 20px;
@@ -28,14 +31,14 @@ $(function() {
     $("#palette").append("<br />");
     for(var i = 0; i < 36; i++) {
         $("#palette").append("<div class='color'></div>");
-        var val = parseInt(((35 - i) / 35) * 100);
+        var val = parseInt(((19 - i) / 19) * 255);
         $(".color").eq(count++).css("background-color", "rgb(" + val + ", " + val + ", " + val + ")");
     }
 
     var colors = [];
     $(".color").each(function() {
         var result = /rgb\((\d+), (\d+), (\d+)\)/.exec($(this).css("background-color"));
-        colors.push([ parseInt(result[1]), parseInt(result[2]), parseInt(result[3]) ]);
+        colors.push({ r: parseInt(result[1]), g: parseInt(result[2]), b: parseInt(result[3]) });
     });
 
     $("textarea").val(JSON.stringify(colors));
@@ -46,3 +49,13 @@ $(function() {
 
 <div id="palette"></div>
 
+<div style="clear: both;"></div>
+
+<div class="read">
+    <h4>Refer to</h4>
+    <ul>
+        <li><a href="http://websafecolorcodes.com/colors-palette/color-wheel-palette/">Color Wheel Palette</a></li>
+        <li><a href="http://www.waldronconstructionllc.com/wp-content/uploads/2012/03/SqfinPalette-RealColorWheel-RGB-14inwide72dpi-1024x437.png">Refer Image</a></li>
+        <li><a href="http://codeforartists.com/samples/cfa-color-palette-hsl.php">Algorithm</a></li>
+    </ul>
+</div>
