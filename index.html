@@ -31,7 +31,7 @@ $(function() {
     $("#palette").append("<br />");
     for(var i = 0; i < 36; i++) {
         $("#palette").append("<div class='color'></div>");
-        var val = parseInt(((19 - i) / 19) * 255);
+        var val = parseInt(((35 - i) / 35) * 255);
         $(".color").eq(count++).css("background-color", "rgb(" + val + ", " + val + ", " + val + ")");
     }
 
